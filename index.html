@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess The Number Game</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    <header> 
+        <div class="profile" > 
+            <button><img src="profile.jpeg" alt="Profile Picture" height="50" width="50">YourProfile</button>
+        </div>
+        <br>
+        <button>History</button>
+        <br><br>
+        <button>LeaderBoard</button>
+        <br><br>
+        <button>HighSore</button>
+    </header>    
+    <main ID="main">
+        <h1>GUESS THE NUMBER</h1>
+        <nav>
+            <ul>
+                <li>GAME MODE : </li>
+                <li><button>DIFFICULT</button></li>
+                <li><button>MODERATE</button></li>
+                <li><button>EASY</button></li>
+            </ul>
+        </nav>
+        <br><br>
+        <div class="container">
+            <p>Pick a number between 1 to 100</p>
+            <input type="number" name="" id="inp" placeholder="Enter your guess">
+            <br><br>
+            <button id="submit">Guess!</button>
+            <p id="msg"></p>
+            <p>Attempts: <span id="Attempt">0</span></p>
+            <button id="resBtn">Restart Again</button>
+        </div>
+    </main>
+</body>
+</html>
