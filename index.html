@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Guessing Game</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Number Guessing Game</h1>
+    <p>Guess the number between <span id="min-range">1</span> and <span id="max-range">1000</span>.</p>
+
+    <div class="game-area">
+      <input type="number" id="guess-input" placeholder="Enter your guess">
+      <button id="submit-btn">Submit Guess</button>
+    </div>
+
+    <p id="feedback" class="feedback">Make your first guess!</p>
+
+    <div class="game-info">
+      <p>Attempts: <span id="attempts">0</span></p>
+      <p>High Score: <span id="high-score">--</span></p>
+    </div>
+
+    <button id="reset-btn" class="reset-btn">Reset Game</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
