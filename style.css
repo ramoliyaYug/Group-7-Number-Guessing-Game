@@ -1,0 +1,114 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #cc2b5e, #753a88);
+  height: 100vh;
+  animation: gradient-animation 5s infinite alternate;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background: linear-gradient(to right, #cc2b5e, #753a88);
+  }
+  50% {
+    background: linear-gradient(to right, #753a88, #cc2b5e);
+  }
+  100% {
+    background: linear-gradient(to right, #cc2b5e, #ff758c);
+  }
+}
+
+.game-container {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  animation: pop-in 1s ease;
+}
+
+@keyframes pop-in {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+h1 {
+  margin-bottom: 30px;
+  font-size: 40px;
+  animation: fade-in 1.5s ease;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+p {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  animation: slide-in 1.5s ease;
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+input[type="number"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-right: 10px;
+  font-size: 18px;
+  animation: input-focus 1s infinite alternate;
+}
+
+@keyframes input-focus {
+  0% {
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(0, 123, 255, 1);
+  }
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #753a88;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #cc2b5e;
+}
+
