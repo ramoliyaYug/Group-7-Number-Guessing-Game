@@ -1,114 +1,244 @@
-* {
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
-}
-
-body {
   display: flex;
-  align-items: center;
   justify-content: center;
-  background: linear-gradient(to right, #cc2b5e, #753a88);
-  height: 100vh;
-  animation: gradient-animation 5s infinite alternate;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #8e44ad, #3498db);
+  animation: gradientBG 6s infinite alternate ease-in-out;
+  overflow: hidden;
 }
 
-@keyframes gradient-animation {
+@keyframes gradientBG {
   0% {
-    background: linear-gradient(to right, #cc2b5e, #753a88);
-  }
-  50% {
-    background: linear-gradient(to right, #753a88, #cc2b5e);
+    background: linear-gradient(135deg, #8e44ad, #3498db);
   }
   100% {
-    background: linear-gradient(to right, #cc2b5e, #ff758c);
+    background: linear-gradient(135deg, #3498db, #8e44ad);
   }
 }
 
-.game-container {
-  background-color: #f8f9fa;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  text-align: center;
-  animation: pop-in 1s ease;
+.container {
+  max-width: 400px;
+  width: 90%;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
 }
 
-@keyframes pop-in {
-  0% {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+.container:hover {
+  transform: scale(1.05);
 }
 
 h1 {
-  margin-bottom: 30px;
-  font-size: 40px;
-  animation: fade-in 1.5s ease;
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-p {
+  text-align: center;
+  font-size: 2rem;
   margin-bottom: 20px;
-  font-size: 20px;
-  font-weight: bold;
-  animation: slide-in 1.5s ease;
+  color: #2c3e50;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-@keyframes slide-in {
-  0% {
-    transform: translateX(-50px);
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #333;
+  transition: all 0.3s ease-in-out;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease-in-out;
+}
+
+input:focus {
+  border-color: #8e44ad;
+  outline: none;
+  box-shadow: 0 0 10px rgba(142, 68, 173, 0.5);
+}
+
+input:focus + label {
+  color: #8e44ad;
+}
+
+.btn {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(to right, #8e44ad, #3498db);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.btn:hover {
+  background: linear-gradient(to right, #3498db, #8e44ad);
+  transform: scale(1.05);
+}
+
+.actions a {
+  color: #3498db;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 10px;
+  transition: color 0.3s ease-in-out;
+}
+
+.actions a:hover {
+  color: #8e44ad;
+}
+
+.pop-up {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
     opacity: 0;
   }
-  100% {
-    transform: translateX(0);
+  to {
     opacity: 1;
   }
 }
 
-input[type="number"] {
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-  margin-right: 10px;
-  font-size: 18px;
-  animation: input-focus 1s infinite alternate;
+.pop-up-content {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  transform: scale(0.8);
+  animation: popUpScale 0.5s ease-in-out;
 }
 
-@keyframes input-focus {
-  0% {
-    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+@keyframes popUpScale {
+  from {
+    transform: scale(0.5);
   }
-  100% {
-    box-shadow: 0 0 20px rgba(0, 123, 255, 1);
+  to {
+    transform: scale(1);
   }
 }
 
-button {
-  padding: 10px 20px;
-  border-radius: 5px;
+#forgot-password-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.pop-up-content {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  transform: scale(0.8);
+  animation: popUpScale 0.5s ease-in-out;
+}
+
+#forgot-email,
+#new-password,
+#confirm-new-password {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.05);
+  margin-bottom: 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+#forgot-email:focus,
+#new-password:focus,
+#confirm-new-password:focus {
+  border-color: #8e44ad;
+  outline: none;
+  box-shadow: 0 0 10px rgba(142, 68, 173, 0.5);
+}
+
+.pop-up-content label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #333;
+  transition: all 0.3s ease-in-out;
+}
+
+.pop-up-content input:focus + label {
+  color: #8e44ad;
+}
+
+#forgot-password-popup .btn {
+  padding: 12px;
   border: none;
-  background-color: #753a88;
+  border-radius: 8px;
+  background: linear-gradient(to right, #8e44ad, #3498db);
   color: #fff;
-  font-size: 18px;
+  font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
 
-button:hover {
-  background-color: #cc2b5e;
+#forgot-password-popup .btn:hover {
+  background: linear-gradient(to right, #3498db, #8e44ad);
+  transform: scale(1.05);
 }
 
+#forgot-password-popup .btn:focus {
+  background-color: #e74c3c;
+}
+
+#forgot-password-popup button {
+  padding: 10px;
+  border: none;
+  background-color: #e74c3c;
+  color: white;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#forgot-password-popup button:hover {
+  background-color: #c0392b;
+}

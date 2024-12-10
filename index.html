@@ -1,23 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Number Guessing Game</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="game-container">
-    <h1>Number Guessing Game</h1>
-    <p id="instructions">Guess the number between 1 and 1000</p>
-    <input type="number" id="guess-input" placeholder="Enter your guess..." />
-    <button id="submit-btn">Submit Guess</button>
-    <p id="feedback">1</p>
-    <p>Attempts: <span id="attempts">0</span></p>
-    <p>High Score (Least Attempts): <span id="high-score">-</span></p>
-    <button id="reset-btn">Reset Game</button>
-  </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login and Signup</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Login Div Container -->
+    <div class="container" id="login-container">
+      <h1>Login</h1>
+      <form onsubmit="login(event)">
+        <div class="form-group">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" name="email" />
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" name="password" />
+        </div>
+        <div class="actions">
+          <button type="submit" class="btn">Login</button>
+          <a href="#" onclick="switchToSignup()">Sign Up</a>
+        </div>
+        <div style="text-align: center; margin-top: 10px">
+          <a href="#" onclick="forgotPassword(event)">Forgot Password?</a>
+        </div>
+      </form>
+    </div>
 
-  <script src="script.js"></script>
-</body>
+    <!-- Signup Div Container -->
+    <div class="container" id="signup-container" style="display: none">
+      <h1>Sign Up</h1>
+      <form onsubmit="signup(event)">
+        <div class="form-group">
+          <label for="signup-name">Name</label>
+          <input
+            type="text"
+            id="signup-name"
+            name="name"
+            placeholder="Enter your full name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="signup-email">Email</label>
+          <input
+            type="email"
+            id="signup-email"
+            name="email"
+            placeholder="Enter your email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="signup-password">Password</label>
+          <input
+            type="password"
+            id="signup-password"
+            name="password"
+            placeholder="Create a password"
+          />
+        </div>
+        <div class="actions">
+          <button type="submit" class="btn">Sign Up</button>
+          <div style="margin-top: 15px; text-align: center">
+            <span>Already have an account?</span>
+            <a href="#" onclick="switchToLogin()">Login</a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Popup Div Container -->
+    <div class="pop-up" id="popup">
+      <div class="pop-up-content">
+        <h2 id="pop-up-status">Success</h2>
+        <p id="pop-up-message">Message goes here</p>
+        <button class="btn" onclick="closePopUp()">OK</button>
+      </div>
+    </div>
+
+    <!-- Forgot Password Popup Div Container -->
+    <div class="pop-up" id="forgot-password-popup" style="display: none">
+      <div class="pop-up-content">
+        <h2>Reset Your Password</h2>
+        <form onsubmit="resetPassword(event)">
+          <div class="form-group">
+            <label for="forgot-email">Email</label>
+            <input
+              type="email"
+              id="forgot-email"
+              name="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="new-password">New Password</label>
+            <input
+              type="password"
+              id="new-password"
+              name="new-password"
+              placeholder="Enter a new password"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="confirm-new-password">Confirm New Password</label>
+            <input
+              type="password"
+              id="confirm-new-password"
+              name="confirm-new-password"
+              placeholder="Confirm your new password"
+              required
+            />
+          </div>
+          <div class="actions">
+            <button type="submit" class="btn">Reset Password</button>
+          </div>
+        </form>
+        <button class="btn" onclick="closeForgotPasswordPopUp()">Cancel</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>
