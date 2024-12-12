@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Guessing Game</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298); 
+      color: #fff; 
+    }
+
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.1); 
+      padding: 10px 20px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .navbar img {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.2));
+    }
+
+    
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: rgba(18, 18, 18, 0.9); 
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .content-section h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: #00d1ff;
+    }
+    .content-section h3 {
+      font-size: 22px;
+      margin: 15px 0 5px;
+      color: #00d1ff; 
+    }
+    .content-section ul {
+      margin-left: 20px;
+      margin-bottom: 20px;
+      list-style: none;
+    }
+    .content-section ul li {
+      font-size: 18px;
+      padding: 5px 0;
+      position: relative;
+      color: #b0b0b0; 
+    }
+    .content-section ul li::before {
+      content: '✓';
+      color: #00d1ff; 
+      font-size: 18px;
+      position: absolute;
+      left: -25px;
+      top: 0;
+    }
+
+    
+    .play-button {
+      display: block;
+      margin: 30px auto 0;
+      padding: 15px 30px;
+      font-size: 20px;
+      background: linear-gradient(90deg, #36d1dc, #5b86e5); 
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .play-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+  </style>
+</head>
+<body>
+  
+  <div class="navbar">
+    <img src="https://cdn-icons-png.flaticon.com/512/1946/1946488.png" alt="Home Icon" title="Home">
+    <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Profile Icon" title="Profile">
+  </div>
+
+  
+  <div class="container">
+    
+    <div class="content-section">
+      <h2>About Game</h2>
+      <h3>Easy</h3>
+      <ul>
+        <li>Guess a number between 1 and 100. Suitable for beginners!</li>
+      </ul>
+      <h3>Medium</h3>
+      <ul>
+        <li>Guess a number between 1 to 500. A Little bit challenging!</li>
+      </ul>
+      <h3>Hard</h3>
+      <ul>
+        <li>Guess a number between 1 to 1000. The most challenging!</li>
+      </ul>
+    </div>
+
+    
+    <div class="content-section">
+      <h2>How to play</h2>
+      <ul>
+        <li>Step 1: Guess the number within the range.</li>
+        <li>Step 2: Follow hints like "Too High" or "Too Low".</li>
+        <li>Step 3: Keep guessing until you win!</li>
+      </ul>
+    </div>
+
+    
+    <div class="content-section">
+      <h2>Reward</h2>
+      <ul>
+        <li>Earn points for each correct guess.</li>
+        <li>Get bonus points for consecutive wins.</li>
+      </ul>
+    </div>
+
+    
+    <button class="play-button" onclick="startGame()">Play</button>
+  </div>
+
+  <script>
+    function startGame() {
+      window.location.href = "index.html"; 
+    }
+  </script>
+</body>
+</html>
