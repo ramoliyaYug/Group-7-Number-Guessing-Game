@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login and Game</title>
+  <title>Login, Signup, and Game</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -13,11 +13,11 @@
     <form onsubmit="login(event)">
       <div class="form-group">
         <label for="login-email">Email</label>
-        <input type="email" id="login-email" name="email" required />
+        <input type="email" id="login-email" />
       </div>
       <div class="form-group">
         <label for="login-password">Password</label>
-        <input type="password" id="login-password" name="password" required />
+        <input type="password" id="login-password" />
       </div>
       <div class="actions">
         <button type="submit" class="btn">Login</button>
@@ -35,85 +35,71 @@
     <form onsubmit="signup(event)">
       <div class="form-group">
         <label for="signup-name">Name</label>
-        <input type="text" id="signup-name" name="name" placeholder="Enter your full name" required />
+        <input type="text" id="signup-name" />
       </div>
       <div class="form-group">
         <label for="signup-email">Email</label>
-        <input type="email" id="signup-email" name="email" placeholder="Enter your email" required />
+        <input type="email" id="signup-email" />
       </div>
       <div class="form-group">
         <label for="signup-password">Password</label>
-        <input type="password" id="signup-password" name="password" placeholder="Create a password" required />
+        <input type="password" id="signup-password" />
       </div>
       <div class="actions">
         <button type="submit" class="btn">Sign Up</button>
-        <div style="margin-top: 15px; text-align: center">
-          <span>Already have an account?</span>
-          <a href="#" onclick="switchToLogin()">Login</a>
-        </div>
+        <a href="#" onclick="switchToLogin()">Login</a>
       </div>
     </form>
   </div>
 
-  <!-- Forgot Password Popup Div Container -->
-  <div class="pop-up" id="forgot-password-popup" style="display: none;">
-    <div class="pop-up-content">
-      <h2>Reset Your Password</h2>
-      <form onsubmit="resetPassword(event)">
-        <div class="form-group">
-          <label for="forgot-email">Email</label>
-          <input type="email" id="forgot-email" name="email" placeholder="Enter your email" required />
-        </div>
-        <div class="form-group">
-          <label for="new-password">New Password</label>
-          <input type="password" id="new-password" name="new-password" placeholder="Enter a new password" required />
-        </div>
-        <div class="form-group">
-          <label for="confirm-new-password">Confirm New Password</label>
-          <input type="password" id="confirm-new-password" name="confirm-new-password" placeholder="Confirm your new password" required />
-        </div>
-        <div class="actions">
-          <button type="submit" class="btn">Reset Password</button>
-        </div>
-      </form>
-      <button class="btn" onclick="closeForgotPasswordPopUp()">Cancel</button>
-    </div>
+  <!-- Forgot Password Popup Div -->
+  <div class="container" id="forgot-password-popup" style="display: none;">
+    <h1>Forgot Password</h1>
+    <form onsubmit="resetPassword(event)">
+      <div class="form-group">
+        <label for="forgot-email">Email</label>
+        <input type="email" id="forgot-email" />
+      </div>
+      <div class="form-group">
+        <label for="new-password">New Password</label>
+        <input type="password" id="new-password" />
+      </div>
+      <div class="form-group">
+        <label for="confirm-new-password">Confirm New Password</label>
+        <input type="password" id="confirm-new-password" />
+      </div>
+      <div class="actions">
+        <button type="submit" class="btn">Reset Password</button>
+        <button type="button" class="btn" onclick="closeForgotPasswordPopUp()">Cancel</button>
+      </div>
+    </form>
   </div>
 
-  <!-- Game Section (Initially Hidden) -->
+  <!-- Game Section -->
   <div id="game-container" style="display: none;">
     <div class="container">
-      <div class="content-section">
-        <h2>Rules of the Game</h2>
-        <ul>
-          <li>Guess a number within the given range.</li>
-          <li>Follow hints like "Too High" or "Too Low" to refine your guesses.</li>
-          <li>Keep guessing until you correctly identify the number!</li>
-        </ul>
+      <h1>Number Guessing Game</h1>
+      <p>Guess the number between <span id="min-range">1</span> and <span id="max-range">100</span>.</p>
+
+      <div class="game-area">
+        <input type="number" id="guess-input" placeholder="Enter your guess">
+        <button id="submit-btn" class="btn">Submit Guess</button>
       </div>
 
-      <div class="content-section">
-        <h2>How to Play</h2>
-        <ul>
-          <li>Step 1: Start the game and choose your range.</li>
-          <li>Step 2: Enter your guesses in the input field.</li>
-          <li>Step 3: Use the feedback provided to narrow down your guesses.</li>
-        </ul>
+      <p id="feedback" class="feedback">Make your first guess!</p>
+
+      <div class="game-info">
+        <p>Attempts: <span id="attempts">0</span></p>
+        <p>Current Score: <span id="current-score">--</span></p>
+        <p>High Score: <span id="high-score">--</span></p>
       </div>
 
-      <div class="content-section">
-        <h2>Rewards</h2>
-        <ul>
-          <li>Earn points for each correct guess.</li>
-          <li>Get bonus points for consecutive wins.</li>
-        </ul>
-      </div>
-
-      <button class="play-button" onclick="startGame()">Play</button>
+      <p id="victory-message" class="victory-message"></p>
+      <button id="reset-btn" class="btn">Reset Game</button>
     </div>
   </div>
 
-  <!-- Popup -->
+  <!-- Popup for Messages -->
   <div class="pop-up" id="popup" style="display: none;">
     <div class="pop-up-content">
       <h2 id="pop-up-status"></h2>

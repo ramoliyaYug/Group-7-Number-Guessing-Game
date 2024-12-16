@@ -1,204 +1,129 @@
-// Function to switch from login to signup
+// Variables for Current User and Random Number
+let randomNumber;
+let attempts = 0;
+let currentUser = null;
+
+// Functions to Switch Between Forms
 function switchToSignup() {
-    document.getElementById('login-container').style.display = 'none';
-    document.getElementById('signup-container').style.display = 'block';
+  document.getElementById("login-container").style.display = "none";
+  document.getElementById("signup-container").style.display = "block";
 }
 
-// Function to switch from signup to login
 function switchToLogin() {
-    document.getElementById('signup-container').style.display = 'none';
-    document.getElementById('login-container').style.display = 'block';
+  document.getElementById("signup-container").style.display = "none";
+  document.getElementById("login-container").style.display = "block";
 }
 
-// Function to register a new user
-function signup(event) {
-    event.preventDefault();
-    const name = document.getElementById("signup-name").value;
-    const email = document.getElementById("signup-email").value;
-    const password = document.getElementById("signup-password").value;
-
-    // Validation for name
-    if (!name) {
-        displayPopup("Error", "Name is required", "red");
-        return;
-    }
-
-    // Validation for email
-    if (!email) {
-        displayPopup("Error", "Email is required", "red");
-        return;
-    }
-
-    // Validation for password
-    if (!password) {
-        displayPopup("Error", "Password is required", "red");
-        return;
-    }
-
-    // Check if email already exists
-    if (localStorage.getItem(email)) {
-        displayPopup("Error", "Email already exists", "red");
-        return;
-    }
-
-    // Store user details in local storage as JSON object
-    localStorage.setItem(email, JSON.stringify({ name, password }));
-
-    // Display success message
-    displayPopup("Success", "Registration successful!", "green");
-}
-
-// Function to login a user
-function login(event) {
-    event.preventDefault();
-    const email = document.getElementById("login-email").value;
-    const password = document.getElementById("login-password").value;
-
-    // Validation for email
-    if (!email) {
-        displayPopup("Error", "Email is required", "red");
-        return;
-    }
-
-    // Validation for password
-    if (!password) {
-        displayPopup("Error", "Password is required", "red");
-        return;
-    }
-
-    // Check if user exists in localStorage
-    const user = JSON.parse(localStorage.getItem(email));
-    if (!user) {
-        displayPopup("Error", "User not found", "red");
-        return;
-    } else if (user.password !== password) {
-        displayPopup("Error", "Incorrect password", "red");
-        return;
-    }
-
-    // On successful login, hide the login form and show the game container
-    document.getElementById('login-container').style.display = 'none';
-    document.getElementById('signup-container').style.display = 'none';
-    document.getElementById('game-container').style.display = 'block';
-
-    displayPopup("Success", "Login successful!", "green");
-}
-
-// Function to retrieve password
-function forgotPassword(event) {
-    event.preventDefault();
-    const email = document.getElementById("login-email").value;
-
-    // Validation for email
-    if (!email) {
-        displayPopup("Error", "Email is required to retrieve password", "red");
-        return;
-    }
-
-    // Check if user exists
-    const user = JSON.parse(localStorage.getItem(email));
-    if (!user) {
-        displayPopup("Error", "User not found", "red");
-    } else {
-        displayPopup("Password", `Your password is: ${user.password}`, "blue");
-    }
-}
-
-// Function to display popup
-function displayPopup(status, message, color) {
-    const popup = document.getElementById("popup");
-    const popupStatus = document.getElementById("pop-up-status");
-    const popupMessage = document.getElementById("pop-up-message");
-
-    popupStatus.textContent = status;
-    popupStatus.style.color = color;
-    popupMessage.textContent = message;
-
-    popup.style.display = "flex";
-}
-
-// Function to close popup
-function closePopUp() {
-    document.getElementById("popup").style.display = "none";
-}
-
-// Function to switch from login to forgot password
 function switchToForgotPassword() {
-    document.getElementById('login-container').style.display = 'none';
-    document.getElementById('signup-container').style.display = 'none';
-    document.getElementById('forgot-password-popup').style.display = 'flex';
+  document.getElementById("login-container").style.display = "none";
+  document.getElementById("forgot-password-popup").style.display = "block";
 }
 
-// Function to reset password
-function resetPassword(event) {
-    event.preventDefault();
-    
-    const email = document.getElementById("forgot-email").value;
-    const newPassword = document.getElementById("new-password").value;
-    const confirmNewPassword = document.getElementById("confirm-new-password").value;
-
-    // Validation for email
-    if (!email) {
-        displayPopup("Error", "Email is required", "red");
-        return;
-    }
-
-    // Validation for new password
-    if (!newPassword) {
-        displayPopup("Error", "New password is required", "red");
-        return;
-    }
-
-    // Validation for confirm new password
-    if (!confirmNewPassword) {
-        displayPopup("Error", "Please confirm your new password", "red");
-        return;
-    }
-
-    // Validation for password match
-    if (newPassword !== confirmNewPassword) {
-        displayPopup("Error", "Passwords do not match", "red");
-        return;
-    }
-
-    // Check if user exists
-    const user = JSON.parse(localStorage.getItem(email));
-    if (!user) {
-        displayPopup("Error", "User not found", "red");
-    } else {
-        user.password = newPassword;
-        localStorage.setItem(email, JSON.stringify(user));
-        displayPopup("Success", "Password reset successful!", "green");
-        closeForgotPasswordPopUp();
-    }
-}
-
-// Function to close forgot password popup
 function closeForgotPasswordPopUp() {
-    document.getElementById('forgot-password-popup').style.display = 'none';
-    document.getElementById('login-container').style.display = 'block';
+  document.getElementById("forgot-password-popup").style.display = "none";
+  document.getElementById("login-container").style.display = "block";
 }
 
-// Function to switch from forgot password to login
-function forgotPasswordRedirect(event) {
-    event.preventDefault();
-    const email = document.getElementById("login-email").value;
-
-    if (!email) {
-        displayPopup("Error", "Email is required to retrieve password", "red");
-        return;
-    }
-
-    const user = JSON.parse(localStorage.getItem(email));
-    if (!user) {
-        displayPopup("Error", "User not found", "red");
-    } else {
-        switchToForgotPassword();
-    }
+// Popup Functionality
+function displayPopup(status, message) {
+  document.getElementById("pop-up-status").textContent = status;
+  document.getElementById("pop-up-message").textContent = message;
+  document.getElementById("popup").style.display = "flex";
 }
 
-// Function to start the game (just a placeholder for when the user clicks the play button)
-function startGame() {
-    // Code to start the game can be added here
-    alert("Game Started!");
+function closePopUp() {
+  document.getElementById("popup").style.display = "none";
 }
+
+// Signup Function
+function signup(event) {
+  event.preventDefault();
+  const name = document.getElementById("signup-name").value;
+  const email = document.getElementById("signup-email").value;
+  const password = document.getElementById("signup-password").value;
+
+  if (localStorage.getItem(email)) {
+    displayPopup("Error", "User already exists!");
+    return;
+  }
+
+  localStorage.setItem(email, JSON.stringify({ name, password, highScore: null }));
+  displayPopup("Success", "Signup successful!");
+  switchToLogin();
+}
+
+// Login Function
+function login(event) {
+  event.preventDefault();
+  const email = document.getElementById("login-email").value;
+  const password = document.getElementById("login-password").value;
+
+  const user = JSON.parse(localStorage.getItem(email));
+  if (user && user.password === password) {
+    currentUser = email;
+    startGame(user.highScore || "--");
+    document.getElementById("login-container").style.display = "none";
+  } else {
+    displayPopup("Error", "Invalid credentials!");
+  }
+}
+
+// Forgot Password
+function resetPassword(event) {
+  event.preventDefault();
+  const email = document.getElementById("forgot-email").value;
+  const newPassword = document.getElementById("new-password").value;
+  const confirmPassword = document.getElementById("confirm-new-password").value;
+
+  if (newPassword !== confirmPassword) {
+    displayPopup("Error", "Passwords do not match!");
+    return;
+  }
+
+  const user = JSON.parse(localStorage.getItem(email));
+  if (!user) {
+    displayPopup("Error", "User not found!");
+    return;
+  }
+
+  user.password = newPassword;
+  localStorage.setItem(email, JSON.stringify(user));
+  displayPopup("Success", "Password reset successful!");
+  closeForgotPasswordPopUp();
+}
+
+// Game Functions
+function startGame(highScore) {
+  document.getElementById("game-container").style.display = "block";
+  document.getElementById("high-score").textContent = highScore;
+  resetGame();
+}
+
+function resetGame() {
+  randomNumber = Math.floor(Math.random() * 100) + 1;
+  attempts = 0;
+  document.getElementById("attempts").textContent = attempts;
+  document.getElementById("feedback").textContent = "Make your first guess!";
+}
+
+document.getElementById("submit-btn").addEventListener("click", () => {
+  const guess = parseInt(document.getElementById("guess-input").value, 10);
+  if (!guess || guess < 1 || guess > 100) {
+    document.getElementById("feedback").textContent = "Enter a valid number between 1 and 100!";
+    return;
+  }
+
+  attempts++;
+  document.getElementById("attempts").textContent = attempts;
+
+  if (guess === randomNumber) {
+    const user = JSON.parse(localStorage.getItem(currentUser));
+    user.highScore = Math.max(100 - attempts, user.highScore || 0);
+    localStorage.setItem(currentUser, JSON.stringify(user));
+    displayPopup("Success", `You guessed it in ${attempts} attempts!`);
+  } else {
+    document.getElementById("feedback").textContent = guess < randomNumber ? "Too low!" : "Too high!";
+  }
+});
+
+document.getElementById("reset-btn").addEventListener("click", resetGame);
