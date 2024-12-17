@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login, Signup, and Game</title>
+  <title>Login, Signup, and Number Guessing Game</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Login Div Container -->
+  <!-- Login Form -->
   <div class="container" id="login-container">
     <h1>Login</h1>
     <form onsubmit="login(event)">
@@ -29,7 +29,7 @@
     </form>
   </div>
 
-  <!-- Signup Div Container -->
+  <!-- Signup Form -->
   <div class="container" id="signup-container" style="display: none;">
     <h1>Sign Up</h1>
     <form onsubmit="signup(event)">
@@ -52,7 +52,7 @@
     </form>
   </div>
 
-  <!-- Forgot Password Popup Div -->
+  <!-- Forgot Password -->
   <div class="container" id="forgot-password-popup" style="display: none;">
     <h1>Forgot Password</h1>
     <form onsubmit="resetPassword(event)">
@@ -80,22 +80,24 @@
     <div class="container">
       <h1>Number Guessing Game</h1>
       <p>Guess the number between <span id="min-range">1</span> and <span id="max-range">100</span>.</p>
+      <button id="play-btn" class="play-btn">Play</button>
+      <p id="timer" class="timer" style="display:none;">Time Left: <span id="time-left">60</span> seconds</p>
 
       <div class="game-area">
-        <input type="number" id="guess-input" placeholder="Enter your guess">
+        <input type="number" id="guess-input" placeholder="Enter your guess" />
         <button id="submit-btn" class="btn">Submit Guess</button>
       </div>
 
       <p id="feedback" class="feedback">Make your first guess!</p>
-
       <div class="game-info">
         <p>Attempts: <span id="attempts">0</span></p>
         <p>Current Score: <span id="current-score">--</span></p>
         <p>High Score: <span id="high-score">--</span></p>
       </div>
-
       <p id="victory-message" class="victory-message"></p>
+
       <button id="reset-btn" class="btn">Reset Game</button>
+      <button id="reset-high-score-btn" class="btn">Reset High Score</button>
     </div>
   </div>
 

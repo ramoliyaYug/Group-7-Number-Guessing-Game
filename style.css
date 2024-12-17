@@ -1,3 +1,4 @@
+/* General Styles */
 * {
   margin: 0;
   padding: 0;
@@ -66,6 +67,41 @@ input:focus {
   background: #00b4db;
 }
 
+/* Play Button Style */
+.play-btn {
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  border: none; /* Remove default border */
+  padding: 12px 24px; /* Add some padding */
+  font-size: 18px; /* Increase font size */
+  font-weight: bold; /* Make text bold */
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer; /* Add pointer cursor on hover */
+  transition: all 0.3s ease-in-out; /* Smooth transition */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Hover effect */
+.play-btn:hover {
+  background-color: #45a049; /* Slightly darker green */
+  transform: scale(1.05); /* Slightly enlarge the button */
+}
+
+/* Active (click) effect */
+.play-btn:active {
+  transform: scale(1); /* Return to original size */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3); /* Reduce shadow on click */
+}
+
+/* Disabled button */
+.play-btn:disabled {
+  background-color: #ccc; /* Grey background */
+  color: #666; /* Darker text color */
+  cursor: not-allowed; /* Disabled cursor */
+  box-shadow: none; /* Remove shadow */
+}
+
+
 .feedback {
   font-size: 18px;
   margin: 15px 0;
@@ -99,15 +135,4 @@ input:focus {
   max-width: 500px;
   width: 90%;
   text-align: center;
-}
-
-.pop-up h2 {
-  color: #00d1ff;
-  font-size: 24px;
-}
-
-.pop-up p {
-  color: #fff;
-  font-size: 16px;
-  margin: 10px 0;
 }
