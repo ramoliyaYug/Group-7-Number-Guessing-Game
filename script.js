@@ -249,3 +249,30 @@ function resetPassword(event) {
   displayPopup('Success', 'Password reset successful!');
   closeForgotPasswordPopUp();
 }
+
+// Switch to Signup Form
+function switchToSignup() {
+  document.getElementById('login-container').style.display = 'none';
+  document.getElementById('signup-container').style.display = 'block';
+  document.getElementById('forgot-password-popup').style.display = 'none';
+}
+
+// Switch to Login Form
+function switchToLogin() {
+  document.getElementById('signup-container').style.display = 'none';
+  document.getElementById('forgot-password-popup').style.display = 'none';
+  document.getElementById('login-container').style.display = 'block';
+}
+
+// Switch to Forgot Password Form
+function switchToForgotPassword() {
+  document.getElementById('login-container').style.display = 'none';
+  document.getElementById('signup-container').style.display = 'none';
+  document.getElementById('forgot-password-popup').style.display = 'block';
+}
+
+// Close Forgot Password Pop-Up
+function closeForgotPasswordPopUp() {
+  document.getElementById('forgot-password-popup').style.display = 'none';
+  document.getElementById('login-container').style.display = 'block';
+}
