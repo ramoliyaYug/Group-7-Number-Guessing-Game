@@ -12,7 +12,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   padding: 20px;
   flex-direction: column;
 }
@@ -25,6 +25,11 @@ body {
   width: 100%;
   max-width: 450px;
   margin-top: 30px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.container:hover {
+  transform: translateY(-5px);
 }
 
 h1 {
@@ -36,18 +41,20 @@ h1 {
 
 input {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin-top: 10px;
   border: 1px solid #555;
   border-radius: 5px;
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
   font-size: 16px;
+  transition: border-color 0.3s ease-in-out;
 }
 
 input:focus {
   outline: none;
   border-color: #00d1ff;
+  box-shadow: 0 0 5px #00d1ff;
 }
 
 .btn {
@@ -55,53 +62,86 @@ input:focus {
   width: 100%;
   background: linear-gradient(90deg, #36d1dc, #5b86e5);
   color: #fff;
-  padding: 10px;
+  padding: 12px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   margin-top: 20px;
   text-align: center;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
 }
 
 .btn:hover {
   background: #00b4db;
+  transform: scale(1.03);
+}
+
+/* Improved Link Styles */
+a {
+  color: #00d1ff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+a:hover {
+  color: #36d1dc;
+  transform: translateY(-2px);
+  text-shadow: 0 0 5px #00d1ff;
+}
+
+a:active {
+  color: #5b86e5;
+  transform: translateY(1px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  input {
+    font-size: 14px;
+  }
+
+  .btn {
+    padding: 10px;
+    font-size: 14px;
+  }
 }
 
 /* Play Button Style */
 .play-btn {
-  background-color: #4CAF50; /* Green background */
-  color: white; /* White text */
-  border: none; /* Remove default border */
-  padding: 12px 24px; /* Add some padding */
-  font-size: 18px; /* Increase font size */
-  font-weight: bold; /* Make text bold */
-  border-radius: 8px; /* Rounded corners */
-  cursor: pointer; /* Add pointer cursor on hover */
-  transition: all 0.3s ease-in-out; /* Smooth transition */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  margin: 20px auto;
+  display: block;
 }
 
-/* Hover effect */
 .play-btn:hover {
-  background-color: #45a049; /* Slightly darker green */
-  transform: scale(1.05); /* Slightly enlarge the button */
+  background-color: #45a049;
+  transform: translateY(-5px);
 }
 
-/* Active (click) effect */
 .play-btn:active {
-  transform: scale(1); /* Return to original size */
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3); /* Reduce shadow on click */
+  transform: translateY(2px);
 }
 
-/* Disabled button */
-.play-btn:disabled {
-  background-color: #ccc; /* Grey background */
-  color: #666; /* Darker text color */
-  cursor: not-allowed; /* Disabled cursor */
-  box-shadow: none; /* Remove shadow */
-}
-
-
+/* Feedback and Messages */
 .feedback {
   font-size: 18px;
   margin: 15px 0;
@@ -116,6 +156,7 @@ input:focus {
   text-align: center;
 }
 
+/* Pop-up */
 .pop-up {
   display: none;
   justify-content: center;
@@ -126,6 +167,7 @@ input:focus {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
 }
 
 .pop-up-content {
@@ -135,4 +177,17 @@ input:focus {
   max-width: 500px;
   width: 90%;
   text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
