@@ -191,3 +191,64 @@ a:active {
     transform: scale(1);
   }
 }
+
+/* Styles for Leaderboard */
+.leaderboard {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  max-height: 300px; /* Increased height for better visibility */
+  overflow-y: auto;
+  color: #fff;
+}
+
+.leaderboard h2 {
+  text-align: center;
+  color: #00d1ff;
+  margin-bottom: 10px;
+  font-size: 22px; /* Increased font size for clarity */
+}
+
+.leaderboard ul {
+  list-style: none;
+  padding: 0;
+}
+
+.leaderboard li {
+  margin: 8px 0;
+  padding: 8px;
+  background: rgba(18, 18, 18, 0.9);
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.leaderboard li:hover {
+  background: rgba(255, 255, 255, 0.2); /* Highlight on hover for better UX */
+}
+
+.leaderboard li span {
+  font-weight: bold;
+  color: #76ff03;
+  font-size: 16px; /* Slightly larger text for better readability */
+}
+
+/* Improved Responsiveness */
+@media (max-width: 600px) {
+  .leaderboard {
+    max-height: 250px; /* Adjusted height for smaller screens */
+    padding: 10px;
+  }
+
+  .leaderboard h2 {
+    font-size: 18px; /* Adjusted heading size */
+  }
+
+  .leaderboard li {
+    padding: 6px;
+    font-size: 14px;
+  }
+}

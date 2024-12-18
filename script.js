@@ -321,3 +321,53 @@ function logout() {
   localStorage.removeItem('currentUser'); // Optionally, clear any session-based data
   displayPopup('Success', 'You have successfully logged out.');
 }
+
+// Leaderboard Toggle Function
+function toggleLeaderboard() {
+  const leaderboard = document.getElementById('leaderboard');
+  const gameContainer = document.getElementById('game-container');
+
+  if (leaderboard.style.display === 'none') {
+    populateLeaderboard();
+    leaderboard.style.display = 'block'; // Show the leaderboard
+    gameContainer.style.display = 'none'; // Hide the game container
+  } else {
+    leaderboard.style.display = 'none'; // Hide the leaderboard
+    gameContainer.style.display = 'block'; // Show the game container
+  }
+}
+
+// Populate Leaderboard Function
+function populateLeaderboard() {
+  const leaderboard = document.getElementById('leaderboard');
+  leaderboard.querySelector('ul').innerHTML = ''; // Clear previous content
+
+  const scores = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    const user = JSON.parse(localStorage.getItem(key));
+
+    if (user.highScore !== null && user.name) {
+      scores.push({ name: user.name, highScore: user.highScore });
+    }
+  }
+
+  // Sort by high score descending
+  scores.sort((a, b) => b.highScore - a.highScore);
+
+  // Populate the leaderboard
+  const list = leaderboard.querySelector('ul');
+  scores.forEach((user, index) => {
+    const listItem = document.createElement('li');
+    listItem.innerHTML = `<span>${index + 1}. ${user.name}</span> <span>${user.highScore}</span>`;
+    list.appendChild(listItem);
+  });
+
+  // Show a message if no scores are found
+  if (scores.length === 0) {
+    const noScoresMsg = document.createElement('p');
+    // noScoresMsg.textContent = 'No scores to display.';
+    noScoresMsg.style.textAlign = 'center';
+    leaderboard.appendChild(noScoresMsg);
+  }
+}

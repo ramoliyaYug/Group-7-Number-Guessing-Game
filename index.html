@@ -13,11 +13,11 @@
     <form onsubmit="login(event)">
       <div class="form-group">
         <label for="login-email">Email</label>
-        <input type="email" id="login-email" />
+        <input type="email" id="login-email" required/>
       </div>
       <div class="form-group">
         <label for="login-password">Password</label>
-        <input type="password" id="login-password" />
+        <input type="password" id="login-password" required/>
       </div>
       <div class="actions">
         <button type="submit" class="btn">Login</button>
@@ -35,15 +35,15 @@
     <form onsubmit="signup(event)">
       <div class="form-group">
         <label for="signup-name">Name</label>
-        <input type="text" id="signup-name" />
+        <input type="text" id="signup-name" required/>
       </div>
       <div class="form-group">
         <label for="signup-email">Email</label>
-        <input type="email" id="signup-email" />
+        <input type="email" id="signup-email" required/>
       </div>
       <div class="form-group">
         <label for="signup-password">Password</label>
-        <input type="password" id="signup-password" />
+        <input type="password" id="signup-password" required/>
       </div>
       <div class="actions">
         <button type="submit" class="btn">Sign Up</button>
@@ -58,15 +58,15 @@
     <form onsubmit="resetPassword(event)">
       <div class="form-group">
         <label for="forgot-email">Email</label>
-        <input type="email" id="forgot-email" />
+        <input type="email" id="forgot-email" required/>
       </div>
       <div class="form-group">
         <label for="new-password">New Password</label>
-        <input type="password" id="new-password" />
+        <input type="password" id="new-password" required/>
       </div>
       <div class="form-group">
         <label for="confirm-new-password">Confirm New Password</label>
-        <input type="password" id="confirm-new-password" />
+        <input type="password" id="confirm-new-password" required/>
       </div>
       <div class="actions">
         <button type="submit" class="btn">Reset Password</button>
@@ -84,7 +84,7 @@
     <p id="timer" class="timer" style="display:none;">Time Left: <span id="time-left">60</span> seconds</p>
 
     <div class="game-area">
-      <input type="number" id="guess-input" placeholder="Enter your guess" />
+      <input type="number" id="guess-input" placeholder="Enter your guess" required/>
       <button id="submit-btn" class="btn">Submit Guess</button>
     </div>
 
@@ -96,10 +96,19 @@
     </div>
     <p id="victory-message" class="victory-message"></p>
 
-    <button id="reset-btn" class="btn" onclick="document.getElementById('play-btn').style.display = 'block'">Reset Game</button>
+    <button id="reset-btn" class="btn">Reset Game</button>
     <button id="reset-high-score-btn" class="btn">Reset High Score</button>
-    <button id="logout-btn" class="btn">Logout</button> <!-- Logout button added -->
+    <button id="logout-btn" class="btn">Logout</button>
+
+    <button id="leaderboard-btn" class="btn" onclick="toggleLeaderboard()">Leaderboard</button>
   </div>
+</div>
+
+<!-- Leaderboard Section -->
+<div id="leaderboard" class="container leaderboard" style="display: none;">
+  <h2>Leaderboard</h2>
+  <ul></ul>
+  <button id="back-to-game-btn" class="btn" onclick="toggleLeaderboard()">Back to Game</button>
 </div>
 
 
