@@ -32,9 +32,20 @@ let low;
 let high;
 let timer;
 let timeLeft = 60;
-let currentUser = null; // Tracks the logged-in user
+let currentUser = null; // Tracks the logged-in user's email
 let highScore = null;
 const victorySound = new Audio('victory.mp3');
+
+// Generate and Store Random Number in Current User's Object
+function generateAndStoreRandomNumber() {
+  randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+
+  if (currentUser) {
+    const user = JSON.parse(localStorage.getItem(currentUser));
+    user.randomNumber = randomNumber; // Store random number in the user object
+    localStorage.setItem(currentUser, JSON.stringify(user));
+  }
+}
 
 // Event Listeners
 playBtn.addEventListener('click', startGame);
@@ -64,10 +75,11 @@ function updateTime() {
 
 // Start Game
 function startGame() {
-  playBtn.disabled = true;
+  playBtn.style.display = 'none'; // Hide the play button
   timerDisplay.style.display = 'block';
   reset();
   gameOver = false;
+  guessInput.disabled = false; // Enable the input field when the game starts
   startTimer();
 }
 
@@ -89,9 +101,8 @@ function startTimer() {
 function endGame(won) {
   gameOver = true;
   clearInterval(timer);
-  guessInput.disabled = true;
+  guessInput.disabled = true; // Disable the input field when the game ends
   submitBtn.disabled = true;
-  playBtn.disabled = false;
 
   if (won) {
     feedback.textContent = '';
@@ -102,13 +113,16 @@ function endGame(won) {
     feedback.textContent = 'Time is up! Game Over!';
     victoryMsg.textContent = `The correct number was ${randomNumber}.`;
   }
+
+  playBtn.style.display = 'block'; // Show the play button again
 }
 
 // Reset Game
 function reset() {
   clearInterval(timer);
 
-  randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+  generateAndStoreRandomNumber(); // Generate a new random number and store it in the current user's object
+
   attempts = 0;
   currentScore = 0; // Ensure currentScore resets
   low = min;
@@ -120,13 +134,11 @@ function reset() {
   feedback.textContent = '';
   victoryMsg.textContent = '';
   guessInput.value = '';
-  guessInput.disabled = false;
+  guessInput.disabled = true; // Disable the input field when the game is reset
   submitBtn.disabled = false;
 
   timeLeft = 60;
   updateTime();
-
-  playBtn.disabled = false;
 
   victorySound.pause();
   victorySound.currentTime = 0;
@@ -166,10 +178,11 @@ function updateHighScore() {
   if (highScore === null || currentScore > highScore) {
     highScore = currentScore;
 
-    // Update user object in localStorage
-    const user = JSON.parse(localStorage.getItem(currentUser));
-    user.highScore = highScore;
-    localStorage.setItem(currentUser, JSON.stringify(user));
+    if (currentUser) {
+      const user = JSON.parse(localStorage.getItem(currentUser));
+      user.highScore = highScore; // Update high score
+      localStorage.setItem(currentUser, JSON.stringify(user));
+    }
 
     highScoreDisplay.textContent = highScore;
   }
@@ -199,7 +212,10 @@ function signup(event) {
     return;
   }
 
-  localStorage.setItem(email, JSON.stringify({ name, password, highScore: null }));
+  localStorage.setItem(
+    email,
+    JSON.stringify({ name, password, highScore: null, randomNumber: null })
+  );
   displayPopup('Success', 'Signup successful!');
   switchToLogin();
 }
@@ -219,6 +235,13 @@ function login(event) {
 
   currentUser = email;
   highScore = user.highScore !== null ? user.highScore : null;
+
+  // Retrieve the random number or generate a new one if null
+  if (user.randomNumber) {
+    randomNumber = user.randomNumber;
+  } else {
+    generateAndStoreRandomNumber();
+  }
 
   highScoreDisplay.textContent = highScore !== null ? highScore : '--';
   displayPopup('Success', 'Login successful!');
@@ -275,4 +298,19 @@ function switchToForgotPassword() {
 function closeForgotPasswordPopUp() {
   document.getElementById('forgot-password-popup').style.display = 'none';
   document.getElementById('login-container').style.display = 'block';
+}
+
+// DOM Element for Logout Button
+const logoutBtn = document.getElementById('logout-btn');
+
+// Event Listener for Logout Button
+logoutBtn.addEventListener('click', logout);
+
+// Logout Function
+function logout() {
+  currentUser = null; // Clear the current user session
+  gameContainer.style.display = 'none'; // Hide the game container
+  loginContainer.style.display = 'block'; // Show the login container
+  localStorage.removeItem('currentUser'); // Optionally, clear any session-based data
+  displayPopup('Success', 'You have successfully logged out.');
 }
