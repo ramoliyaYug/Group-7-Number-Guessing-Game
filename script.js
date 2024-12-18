@@ -122,7 +122,7 @@ function reset() {
   clearInterval(timer);
 
   generateAndStoreRandomNumber(); // Generate a new random number and store it in the current user's object
-
+  
   attempts = 0;
   currentScore = 0; // Ensure currentScore resets
   low = min;
@@ -165,7 +165,14 @@ function guess() {
     high = Math.min(high, userGuess - 1);
     feedback.textContent = `Too high! Enter a number between ${low} and ${high}.`;
   } else {
-    currentScore = Math.max(0, 100 - attempts); // Score logic
+    // Calculate score based on attempts and time left
+    // Adjust score calculation to be balanced between attempts and time left
+    let attemptsScore = Math.max(0, 50 - attempts * 2); // Max of 50 points for attempts
+    let timeScore = Math.max(0, Math.floor((timeLeft / 60) * 50)); // Max of 50 points for time left
+
+    // Total score is the sum of both components (bounded at 100 max)
+    currentScore = Math.min(100, attemptsScore + timeScore);
+
     currentScoreDisplay.textContent = currentScore; // Display score
     endGame(true);
   }
