@@ -1,14 +1,16 @@
 /* General Styles */
+/* This section resets all elements to remove default padding and margins for consistent styling */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box; /* Ensures padding does not affect element width/height */
 }
 
+/* Sets the overall look and feel of the body */
 body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
-  color: #fff;
+  font-family: 'Poppins', sans-serif; /* Clean and modern font */
+  background: linear-gradient(135deg, #1e3c72, #2a5298); /* Gradient background for visual appeal */
+  color: #fff; /* White text for better contrast */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,51 +19,59 @@ body {
   flex-direction: column;
 }
 
+/* Container Styles */
+/* Applies to the main login, signup, and other forms */
 .container {
-  background: rgba(18, 18, 18, 0.9);
+  background: rgba(18, 18, 18, 0.9); /* Semi-transparent dark background */
   padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 15px; /* Rounded corners for smooth look */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Subtle shadow for elevation */
   width: 100%;
-  max-width: 450px;
+  max-width: 450px; /* Limits width for responsiveness */
   margin-top: 30px;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out; /* Smooth hover effect */
 }
 
+/* Adds hover effect for better interactivity */
 .container:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px); /* Slight upward movement */
 }
 
+/* Heading Styles */
 h1 {
-  color: #00d1ff;
+  color: #00d1ff; /* Bright blue color for emphasis */
   font-size: 24px;
   text-align: center;
   margin-bottom: 20px;
 }
 
+/* Input Fields */
+/* Universal styles for all input fields */
 input {
   width: 100%;
   padding: 12px;
   margin-top: 10px;
-  border: 1px solid #555;
+  border: 1px solid #555; /* Subtle border */
   border-radius: 5px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1); /* Transparent background */
   color: #fff;
   font-size: 16px;
-  transition: border-color 0.3s ease-in-out;
+  transition: border-color 0.3s ease-in-out; /* Smooth focus effect */
 }
 
+/* Enhances focus behavior */
 input:focus {
   outline: none;
-  border-color: #00d1ff;
-  box-shadow: 0 0 5px #00d1ff;
+  border-color: #00d1ff; /* Bright border color on focus */
+  box-shadow: 0 0 5px #00d1ff; /* Subtle glow effect */
 }
 
+/* Button Styles */
 .btn {
   display: block;
   width: 100%;
-  background: linear-gradient(90deg, #36d1dc, #5b86e5);
-  color: #fff;
+  background: linear-gradient(90deg, #36d1dc, #5b86e5); /* Gradient background */
+  color: #fff; /* White text */
   padding: 12px;
   border: none;
   border-radius: 5px;
@@ -69,34 +79,38 @@ input:focus {
   margin-top: 20px;
   text-align: center;
   font-weight: bold;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; /* Smooth hover effects */
 }
 
+/* Hover state for buttons */
 .btn:hover {
-  background: #00b4db;
-  transform: scale(1.03);
+  background: #00b4db; /* Slightly darker blue */
+  transform: scale(1.03); /* Slight zoom effect */
 }
 
-/* Improved Link Styles */
+/* Link Styles */
 a {
-  color: #00d1ff;
+  color: #00d1ff; /* Bright blue links */
   text-decoration: none;
   font-weight: bold;
-  transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
+  transition: color 0.3s ease-in-out, transform 0.2s ease-in-out; /* Smooth hover effects */
 }
 
+/* Hover state for links */
 a:hover {
   color: #36d1dc;
-  transform: translateY(-2px);
-  text-shadow: 0 0 5px #00d1ff;
+  transform: translateY(-2px); /* Slight upward movement */
+  text-shadow: 0 0 5px #00d1ff; /* Glow effect */
 }
 
+/* Active state for links */
 a:active {
   color: #5b86e5;
-  transform: translateY(1px);
+  transform: translateY(1px); /* Slight downward movement */
 }
 
-/* Responsive Adjustments */
+/* Responsive Styles */
+/* Adjusts styles for smaller screens */
 @media (max-width: 768px) {
   .container {
     padding: 20px;
@@ -116,47 +130,53 @@ a:active {
   }
 }
 
-/* Play Button Style */
+/* Play Button Styles */
+/* Customized style for the game play button */
 .play-btn {
-  background-color: #4CAF50;
+  background-color: #4CAF50; /* Green color */
   color: white;
   border: none;
   padding: 15px 30px;
   font-size: 20px;
   font-weight: bold;
-  border-radius: 10px;
+  border-radius: 10px; /* Rounded corners */
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out; /* Smooth hover effect */
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
   margin: 20px auto;
   display: block;
 }
 
+/* Hover effect for the play button */
 .play-btn:hover {
-  background-color: #45a049;
-  transform: translateY(-5px);
+  background-color: #45a049; /* Darker green */
+  transform: translateY(-5px); /* Slight upward movement */
 }
 
+/* Active state for the play button */
 .play-btn:active {
-  transform: translateY(2px);
+  transform: translateY(2px); /* Slight downward movement */
 }
 
-/* Feedback and Messages */
+/* Feedback Messages */
+/* Styling feedback text */
 .feedback {
   font-size: 18px;
   margin: 15px 0;
-  color: #ffeb3b;
+  color: #ffeb3b; /* Bright yellow */
   text-align: center;
 }
 
+/* Victory message */
 .victory-message {
   font-size: 20px;
-  color: #76ff03;
+  color: #76ff03; /* Bright green */
   margin-top: 20px;
   text-align: center;
 }
 
-/* Pop-up */
+/* Pop-up Styles */
+/* For general pop-up messages */
 .pop-up {
   display: none;
   justify-content: center;
@@ -166,77 +186,84 @@ a:active {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 999;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 999; /* Ensures pop-up is above other elements */
 }
 
+/* Pop-up content styling */
 .pop-up-content {
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.9); /* Dark background */
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 10px; /* Rounded corners */
   max-width: 500px;
   width: 90%;
   text-align: center;
-  animation: fadeIn 0.5s ease-in-out;
+  animation: fadeIn 0.5s ease-in-out; /* Fade-in effect */
 }
 
-/* Animations */
+/* Animation for pop-ups */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: scale(0.9);
+    transform: scale(0.9); /* Start smaller */
   }
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1); /* Full size */
   }
 }
 
-/* Styles for Leaderboard */
+/* Leaderboard Styles */
+/* General styles for the leaderboard section */
 .leaderboard {
   margin-top: 20px;
   padding: 15px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
   border-radius: 10px;
-  max-height: 300px; /* Increased height for better visibility */
-  overflow-y: auto;
+  max-height: 300px; /* Limits height with scrolling */
+  overflow-y: auto; /* Adds vertical scroll if needed */
   color: #fff;
 }
 
+/* Leaderboard heading styles */
 .leaderboard h2 {
   text-align: center;
-  color: #00d1ff;
+  color: #00d1ff; /* Bright blue */
   margin-bottom: 10px;
-  font-size: 22px; /* Increased font size for clarity */
+  font-size: 22px; /* Larger font for clarity */
 }
 
+/* Leaderboard list styles */
 .leaderboard ul {
   list-style: none;
   padding: 0;
 }
 
+/* Individual leaderboard entry */
 .leaderboard li {
   margin: 8px 0;
   padding: 8px;
-  background: rgba(18, 18, 18, 0.9);
-  border-radius: 5px;
+  background: rgba(18, 18, 18, 0.9); /* Dark background */
+  border-radius: 5px; /* Rounded corners */
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Space between name and score */
   align-items: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 
+/* Hover effect for leaderboard entries */
 .leaderboard li:hover {
-  background: rgba(255, 255, 255, 0.2); /* Highlight on hover for better UX */
+  background: rgba(255, 255, 255, 0.2); /* Highlight on hover */
 }
 
+/* Leaderboard text styles */
 .leaderboard li span {
   font-weight: bold;
-  color: #76ff03;
-  font-size: 16px; /* Slightly larger text for better readability */
+  color: #76ff03; /* Bright green */
+  font-size: 16px; /* Larger text */
 }
 
-/* Improved Responsiveness */
+/* Responsive adjustments for leaderboard */
 @media (max-width: 600px) {
   .leaderboard {
     max-height: 250px; /* Adjusted height for smaller screens */
@@ -244,11 +271,11 @@ a:active {
   }
 
   .leaderboard h2 {
-    font-size: 18px; /* Adjusted heading size */
+    font-size: 18px; /* Smaller heading size */
   }
 
   .leaderboard li {
     padding: 6px;
-    font-size: 14px;
+    font-size: 14px; /* Smaller text size */
   }
 }

@@ -7,9 +7,10 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Login Form -->
+  <!-- Login Form Section -->
   <div class="container" id="login-container">
     <h1>Login</h1>
+    <!-- Form for logging in users -->
     <form onsubmit="login(event)">
       <div class="form-group">
         <label for="login-email">Email</label>
@@ -29,9 +30,10 @@
     </form>
   </div>
 
-  <!-- Signup Form -->
+  <!-- Signup Form Section -->
   <div class="container" id="signup-container" style="display: none;">
     <h1>Sign Up</h1>
+    <!-- Form for signing up new users -->
     <form onsubmit="signup(event)">
       <div class="form-group">
         <label for="signup-name">Name</label>
@@ -52,9 +54,10 @@
     </form>
   </div>
 
-  <!-- Forgot Password -->
+  <!-- Forgot Password Section -->
   <div class="container" id="forgot-password-popup" style="display: none;">
     <h1>Forgot Password</h1>
+    <!-- Form for resetting the password -->
     <form onsubmit="resetPassword(event)">
       <div class="form-group">
         <label for="forgot-email">Email</label>
@@ -75,52 +78,54 @@
     </form>
   </div>
 
-<!-- Game Section -->
-<div id="game-container" style="display: none;">
-  <div class="container">
-    <h1>Number Guessing Game</h1>
-    <p>Guess the number between <span id="min-range">1</span> and <span id="max-range">100</span>.</p>
-    <button id="play-btn" class="play-btn">Play</button>
-    <p id="timer" class="timer" style="display:none;">Time Left: <span id="time-left">60</span> seconds</p>
+  <!-- Game Section for Number Guessing Game -->
+  <div id="game-container" style="display: none;">
+    <div class="container">
+      <h1>Number Guessing Game</h1>
+      <p>Guess the number between <span id="min-range">1</span> and <span id="max-range">100</span>.</p>
+      <button id="play-btn" class="play-btn">Play</button>
+      <p id="timer" class="timer" style="display:none;">Time Left: <span id="time-left">60</span> seconds</p>
 
-    <div class="game-area">
-      <input type="number" id="guess-input" placeholder="Enter your guess" required/>
-      <button id="submit-btn" class="btn">Submit Guess</button>
+      <div class="game-area">
+        <input type="number" id="guess-input" placeholder="Enter your guess" required/>
+        <button id="submit-btn" class="btn">Submit Guess</button>
+      </div>
+
+      <p id="feedback" class="feedback">Make your first guess!</p>
+      <div class="game-info">
+        <p>Attempts: <span id="attempts">0</span></p>
+        <p>Current Score: <span id="current-score">--</span></p>
+        <p>High Score: <span id="high-score">--</span></p>
+      </div>
+      <p id="victory-message" class="victory-message"></p>
+
+      <button id="reset-btn" class="btn" onclick="document.getElementById('play-btn').style.display = 'block'">Reset Game</button>
+      <button id="reset-high-score-btn" class="btn">Reset High Score</button>
+      <button id="logout-btn" class="btn">Logout</button>
+
+      <button id="leaderboard-btn" class="btn" onclick="toggleLeaderboard()">Leaderboard</button>
     </div>
-
-    <p id="feedback" class="feedback">Make your first guess!</p>
-    <div class="game-info">
-      <p>Attempts: <span id="attempts">0</span></p>
-      <p>Current Score: <span id="current-score">--</span></p>
-      <p>High Score: <span id="high-score">--</span></p>
-    </div>
-    <p id="victory-message" class="victory-message"></p>
-
-    <button id="reset-btn" class="btn" onclick="document.getElementById('play-btn').style.display = 'block'">Reset Game</button>
-    <button id="reset-high-score-btn" class="btn">Reset High Score</button>
-    <button id="logout-btn" class="btn">Logout</button>
-
-    <button id="leaderboard-btn" class="btn" onclick="toggleLeaderboard()">Leaderboard</button>
   </div>
-</div>
 
-<!-- Leaderboard Section -->
-<div id="leaderboard" class="container leaderboard" style="display: none;">
-  <h2>Leaderboard</h2>
-  <ul></ul>
-  <button id="back-to-game-btn" class="btn" onclick="toggleLeaderboard()">Back to Game</button>
-</div>
-
+  <!-- Leaderboard Section -->
+  <div id="leaderboard" class="container leaderboard" style="display: none;">
+    <h2>Leaderboard</h2>
+    <!-- List to display top players -->
+    <ul></ul>
+    <button id="back-to-game-btn" class="btn" onclick="toggleLeaderboard()">Back to Game</button>
+  </div>
 
   <!-- Popup for Messages -->
   <div class="pop-up" id="popup" style="display: none;">
     <div class="pop-up-content">
+      <!-- Status and message for various operations -->
       <h2 id="pop-up-status"></h2>
       <p id="pop-up-message"></p>
       <button class="btn" onclick="closePopUp()">Close</button>
     </div>
   </div>
 
+  <!-- Linking JavaScript file for interactive functionality -->
   <script src="script.js"></script>
 </body>
 </html>
